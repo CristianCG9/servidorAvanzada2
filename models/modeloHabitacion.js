@@ -22,10 +22,6 @@ const Habitacion=new Schema({
     cantidadMaxPersona:{
         type:Number,
         required:true
-    },
-    id:{
-        type:Number,
-        require:true
     }
 })
 

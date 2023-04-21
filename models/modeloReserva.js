@@ -4,28 +4,28 @@ const Schema = mongoose.Schema;
 const Reserva=new Schema({
     nombreCliente:{
         type:String,
-        require:true
+        required:true
     },
     apellidoCliente:{
         type:String,
-        require:true
+        required:true
     },
     telefono:{
         type:Number,
-        require:true
+        required:true
     },
     fechaInicioReserva:{
         type:Date,
-        require:true
+        required:true
     },
     fechaFinalReserva:{
         type:Date,
-        require:true
+        required:true
     },
     numeroPersonas:{
         type:Number,
-        require:true
+        required:true
     }
 })
 
-export const modeloReserva=mongoose.model('reserba',Reserva)
+export const modeloReserva=mongoose.model('reserva',Reserva)

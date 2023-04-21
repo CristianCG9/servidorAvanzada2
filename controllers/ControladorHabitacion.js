@@ -1,10 +1,12 @@
+import {ServicioHabitaciones} from "../services/ServiciosHabitaciones.js"
 export class ControladorHabitaciones{
     constructor(){}
 
-    registrarHabitacion(peticion,respuesta){
+    async registrarHabitaciones(peticion,respuesta){
         let datosHabitacion=peticion.body
-        console.log(datosHabitacion)
+        let servicioHabitaciones=new ServicioHabitaciones()
         try{
+            await servicioHabitaciones.registrarHabitaciones(datosHabitacion)
             respuesta.status(200).json({
                 "mensaje":`Exito al agregar los datos`
             })
@@ -15,11 +17,13 @@ export class ControladorHabitaciones{
         }
     }
 
-    buscarHabitacion(peticion,respuesta){
+    async buscarHabitacion(peticion,respuesta){
         let idHabitacion=peticion.params.idhabitacion
+        let servicioHabitacion=new ServicioHabitaciones()
         try{
             respuesta.status(200).json({
-                "mensaje":`Exito al buscar la habitacion ${idHabitacion}`
+                "mensaje":`Exito al buscar la habitacion ${idHabitacion}`,
+                "habitacion":await servicioHabitacion.buscarHabitacion(idHabitacion)
             })
         }catch(erroPeticion){
             respuesta.status(400).json({
@@ -28,12 +32,12 @@ export class ControladorHabitaciones{
         }
     }
 
-    buscarHabitaciones(peticion,respuesta){
-        let idHabitacion=peticion.params.idhabitacion
-        let datosHabitacion=peticion.body
+    async buscarHabitaciones(peticion,respuesta){
+        let servicioHabitacion=new ServicioHabitaciones()
         try{
             respuesta.status(200).json({
-                "mensaje":`Exito al buscar las habitaciones`
+                "mensaje":`Exito al buscar las habitaciones`,
+                "mensaje":await servicioHabitacion.buscarHabitaciones()
             })
         }catch(erroPeticion){
             respuesta.status(400).json({
@@ -42,10 +46,12 @@ export class ControladorHabitaciones{
         }
     }
 
-    editarHabitacion(peticion,respuesta){
+    async editarHabitacion(peticion,respuesta){
         let idHabitacion=peticion.params.idhabitacion
         let datosHabitacion=peticion.body
+        let servicioHabitacion= new ServicioHabitaciones()
         try{
+            await servicioHabitacion.editarHabitacion(idHabitacion,datosHabitacion)
             respuesta.status(200).json({
                 "mensaje":`Exito al editar la habitacion`
             })
