@@ -19,7 +19,7 @@ const Habitacion=new Schema({
         type:Number,
         required:true
     },
-    cantidadMaxPersona:{
+    cantidadMaxPersonas:{
         type:Number,
         required:true
     }
